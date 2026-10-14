@@ -1,0 +1,6 @@
+{
+  "name": "Farha's Birthday Surprise",
+  "description": "A premium, emotional, interactive birthday website created for Farha by her best friend Adith.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

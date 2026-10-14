@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', 'Alexandria', 'Cairo', Georgia, serif;
+  }
+  .font-script {
+    font-family: 'Dancing Script', 'Cairo', cursive;
+  }
+  .font-handwriting {
+    font-family: 'Caveat', 'Cairo', cursive;
+  }
+  .font-sans-clean {
+    font-family: 'Plus Jakarta Sans', 'Alexandria', 'Cairo', system-ui, -apple-system, sans-serif;
+  }
+}
+
+html[dir="rtl"],
+html[lang="ar"],
+[dir="rtl"] {
+  font-family: 'Cairo', 'Alexandria', system-ui, -apple-system, sans-serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: 'Alexandria', 'Cairo', system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+[dir="rtl"] .font-script,
+[dir="rtl"] .font-handwriting {
+  font-family: 'Cairo', system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+[dir="rtl"] .font-sans-clean {
+  font-family: 'Cairo', 'Alexandria', system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+html {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
+}
+
+/* Enable smooth scrolling for pointer/desktop devices without degrading mobile touch momentum */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Mobile Touch Target Standards */
+.touch-target-44 {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Safe Area Insets Helpers */
+.pt-safe-top {
+  padding-top: max(1rem, env(safe-area-inset-top, 1rem));
+}
+
+.pb-safe-bottom {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+}
+
+/* Mobile Card Pop-Out and Tap Transitions */
+.mobile-touch-pop {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  touch-action: manipulation;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.mobile-touch-pop:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Glassmorphism Presets with GPU Composite Layer Promotion */
+.glass-pink {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 215, 228, 0.7);
+  box-shadow: 0 10px 30px -10px rgba(225, 112, 149, 0.15);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.glass-pink-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 192, 213, 0.8);
+  box-shadow: 0 14px 40px -10px rgba(225, 90, 135, 0.2);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.glass-pink-dark {
+  background: rgba(43, 24, 34, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 180, 205, 0.3);
+  box-shadow: 0 16px 40px -10px rgba(10, 0, 8, 0.4);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Breathing Glow Animation */
+@keyframes breathingGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.4), 0 0 30px rgba(251, 182, 206, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(244, 114, 182, 0.7), 0 0 50px rgba(251, 182, 206, 0.45);
+    transform: scale(1.02);
+  }
+}
+
+.animate-glow-breathe {
+  animation: breathingGlow 3s ease-in-out infinite;
+}
+
+/* Gentle Floating */
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 4.5s ease-in-out infinite;
+}
+
+/* Candle flame flicker */
+@keyframes candleFlicker {
+  0%, 100% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px #f59e0b) drop-shadow(0 0 18px #f43f5e);
+  }
+  25% {
+    transform: scale(1.05, 0.95) translate(-0.5px, -1px) rotate(-1deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 22px #f43f5e);
+  }
+  50% {
+    transform: scale(0.96, 1.04) translate(0.5px, 0.5px) rotate(1deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 7px #f59e0b) drop-shadow(0 0 15px #f43f5e);
+  }
+  75% {
+    transform: scale(1.02, 0.98) translate(-0.5px, -0.5px) rotate(0.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 9px #fbbf24) drop-shadow(0 0 20px #f43f5e);
+  }
+}
+
+.animate-candle-flame {
+  animation: candleFlicker 1.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Candle flame blowing off */
+@keyframes flameBlowing {
+  0% {
+    transform: scale(1) skewX(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3, 0.6) skewX(-25deg) translateX(4px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.1, 0.1) skewX(-45deg) translateX(12px) translateY(-10px);
+    opacity: 0;
+  }
+}
+
+.animate-flame-out {
+  animation: flameBlowing 1.2s forwards cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: bottom center;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF0F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #F8B4D9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EC4899;
+}
